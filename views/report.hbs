@@ -1,0 +1,185 @@
+<html lang="en">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="../../stylesheets/style.css">
+    <style>
+        button{
+            text-decoration: none;
+            display: inline-block;
+            padding: 2px 6px;
+        }
+
+        button:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .previous {
+            background-color: #f1f1f1;
+            color: black;
+        }
+    </style>
+</head>
+<body style="background-color:#f8f9fa;">
+<div style="font-family:sans-serif; text-align:center">
+    <h2 >Expense Report</h2>
+</div>
+<br>
+<form style="font-family:sans-serif;padding-right: 20px; text-align:center" action="/test/submit" method="post">
+    <label><h4>Choose Month:</h4></label>
+    <input type="month" name="month">
+    <button type="submit">Submit</button>
+</form>
+<form style="font-family:sans-serif;padding-right: 20px; text-align:center" action="/test/all" method="post">
+    <label><h4>Or Choose all expense info:</h4></label>
+    <button type="submit">All expense info</button>
+</form>
+<form style="font-family:sans-serif;padding-right: 20px; text-align:center" action="/nav" method="get">
+    <button class="previous" type="submit">Back to menu</button>
+</form>
+</br>
+<br>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Sum</th>
+        <th scope="col">Category</th>
+        <th scope="col">Description</th>
+        <th scope="col">Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{# each items }}
+        <tr>
+        <th scope="row">{{ this._id}}></th>
+        <td>{{this.sum}}</td>
+        <td>{{this.category}} </td>
+        <td>{{this.description}} </td>
+        <td>{{this.date}} </td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+</br>
+<div class="container" style="position: relative; height:40vh; width:80vw">
+    <canvas id="myChart"></canvas>
+</div>
+<script>
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
+
+
+    var some= "{{ category }}" ;
+    var array = some.split(",");
+
+    var some_test= "{{ sum }}" ;
+    var array_test = some_test.split(",");
+
+   var dict= [];
+
+    for (let i = 0; i < array.length; i++){
+        if (array[i] in dict){
+            var sum=0;
+            sum += parseFloat(dict[array[i]]) + parseFloat(array_test[i])
+            dict[array[i]] =  sum ;
+        }
+        else {
+            dict[array[i]] = array_test[i];
+        }
+    }
+
+    //
+    // var sum=[];
+    //
+    // Object.entries(dict).forEach(([key, value]) => {
+    //     sum.push(value)
+    // });
+    //
+    // // document.write( Object.keys(dict).map(function (key) { return dict[key]; }));
+    // var dynamicColors = function() {
+    //     var r = Math.random() * 200;
+    //     var g = Math.random() * 100;
+    //     var b = Math.random() * 255;
+    //     var a = 0.6
+    //     document.write("rgba(" + r + "," + g + "," + b + "," + a + ")")
+    //     return "'rgba(" + r + "," + g + "," + b + "," + a + ")'";
+    // };
+    //
+    // var coloR =[];
+    //
+    // for (let i = 0; i < array.length; i++){
+    //     coloR.push(dynamicColors());
+    // }
+
+
+    let massPopChart = new Chart(myChart, {
+        type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data:{
+            labels: Object.keys(dict),
+            datasets:[{
+                label: [] ,
+                data: Object.keys(dict).map(function (key) { return dict[key]; }),
+                backgroundColor:['rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(255, 245, 86, 0.6)',
+                'rgba(75, 123, 192, 0.6)',
+                'rgba(153, 189, 255, 0.6)',
+                'rgba(255, 123, 64, 0.6)',
+                'rgba(255, 99, 132, 0.6)'],
+                borderWidth:1,
+                borderColor:'#777',
+                hoverBorderWidth:3,
+                hoverBorderColor:'#777'
+            }]
+        },
+        options:{
+            title:{
+                display:true,
+                text:'Cost information according to categories',
+                fontSize:18
+            },
+            legend:{
+                display: false,
+                position:'right',
+                labels:{
+                    fontColor:'#000'
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            layout:{
+                padding:{
+                    left:50,
+                    right:0,
+                    bottom:0,
+                    top:0
+                }
+            },
+            tooltips:{
+                enabled:true
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

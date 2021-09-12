@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="../../stylesheets/owl.carousel.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../stylesheets/bootstrap.min.css">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="../../stylesheets/style.css">
+
+  <title>Add Expense</title>
+</head>
+<body>
+
+
+<div class="d-lg-flex half">
+  <div class="bg order-1 order-md-2" style="background-image: url('../../images/bg_1.jpg');"></div>
+  <div class="contents order-2 order-md-1">
+
+<!--    <div class="container">-->
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-7 py-5">
+          <h2>Cost Info</h2>
+          <section class="insert">
+            <form action="insert" method="post">
+              <div class="input">
+                <div class="col-md-6">
+                  <div class="form-group first">
+                    <label for="sum">Sum</label>
+                    <input type="number" class="form-control"  placeholder="e.g 500"  id="sum" name="sum">
+                  </div>
+                </div>
+              </div>
+              <div class="input">
+                <div class="col-md-6">
+                  <div class="form-group first">
+                    <label for="date">Date of expense</label>
+                    <input type="Date" class="form-control"  id="date" name="date">
+                  </div>
+                </div>
+              </div>
+                <div class="input">
+                  <div class="col-md-6">
+                    <div class="form-group last mb-3">
+                      <label for="category">Category</label>
+                      <input type="text" class="form-control"  placeholder="e.g Food"  id="category" name="category">
+                    </div>
+                  </div>
+                </div>
+                  <div class="input">
+                    <div class="col-md-12">
+                      <div class="form-group first">
+                      <label for="description">Description</label>
+                      <input type="text" class="form-control" placeholder="Sushi" id="description" name="description">
+                    </div>
+                  </div>
+                </div>
+               <div class="button">
+                <div class="col-md-6">
+                  <br>
+                  <button  class="btn px-5 btn-primary"  type="submit">INSERT</button>
+                  </br>
+                </div>
+               </div>
+            </form>
+            <br>
+            <form action="/nav" method="get">
+              <div class="button">
+                <div class="col-md-6">
+              <button  class="btn px-5 btn-primary"  type="submit">Back to menu</button>
+                </div>
+              </div>
+            </form>
+            </br>
+          </section>
+         </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<script src="../../javascripts/jquery-3.3.1.min.js"></script>
+<script src="../../javascripts/popper.min.js"></script>
+<script src="../../javascripts/bootstrap.min.js"></script>
+<script src="../../javascripts/main.js"></script>
+</body>
+</html>
