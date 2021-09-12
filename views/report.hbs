@@ -80,22 +80,22 @@
     Chart.defaults.global.defaultFontColor = '#777';
 
 
-    var some= "{{ category }}" ;
-    var array = some.split(",");
+    var categories_list= "{{ category }}" ;
+    var categories_array = categories_list.split(",");
 
-    var some_test= "{{ sum }}" ;
-    var array_test = some_test.split(",");
+    var sums_list= "{{ sum }}" ;
+    var sums_array = sums_list.split(",");
 
-   var dict= [];
+   var dict_cat_sum= [];
 
-    for (let i = 0; i < array.length; i++){
-        if (array[i] in dict){
+    for (let i = 0; i < categories_array.length; i++){
+        if (categories_array[i] in dict_cat_sum){
             var sum=0;
-            sum += parseFloat(dict[array[i]]) + parseFloat(array_test[i])
-            dict[array[i]] =  sum ;
+            sum += parseFloat(dict_cat_sum[categories_array[i]]) + parseFloat(sums_array[i])
+            dict_cat_sum[categories_array[i]] =  sum ;
         }
         else {
-            dict[array[i]] = array_test[i];
+            dict_cat_sum[categories_array[i]] = sums_array[i];
         }
     }
 
@@ -126,10 +126,10 @@
     let massPopChart = new Chart(myChart, {
         type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
         data:{
-            labels: Object.keys(dict),
+            labels: Object.keys(dict_cat_sum),
             datasets:[{
                 label: [] ,
-                data: Object.keys(dict).map(function (key) { return dict[key]; }),
+                data: Object.keys(dict_cat_sum).map(function (key) { return dict_cat_sum[key]; }),
                 backgroundColor:['rgba(255, 99, 132, 0.6)',
                 'rgba(54, 162, 235, 0.6)',
                 'rgba(255, 206, 86, 0.6)',
