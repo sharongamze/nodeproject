@@ -93,13 +93,14 @@ router.get('/get_report',function(req, res, next) {
 
 router.post('/test/submit',function(req, res, next) {
   var date= new Date(req.body.month)
-  var month_input = date.getMonth() + 1
+  var month_input = date.getMonth()
   const month = month_input;
   const year = date.getFullYear();
-  const fromDate = new Date(year, month-1, 1);
+  const fromDate = new Date(year, month, 1);
   const toDate = new Date(fromDate.getFullYear(), fromDate.getMonth() + 1, 0);
   const condition = { date:  { "$gte": fromDate.toString(), "$lte" : toDate.toString() } , User: req.session.user};
-  console.log(fromDate.toString())
+  console.log(fromDate.toString());
+  console.log(toDate.toString());
   Cost.find(condition)
       .then(function(doc) {
         var category= [];
