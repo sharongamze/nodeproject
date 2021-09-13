@@ -1,10 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const hbs = require('hbs')
-const path = require('path')
-const session = require("express-session");
 const User= require('../model/users');
-const app = express();
 const alert = require('alert');
 
 

@@ -1,10 +1,7 @@
-var express = require('express');
-var router = express.Router();
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 ObjectId = Schema.ObjectId;
-const passportLocalMongoose = require('passport-local-mongoose');
-mongoose.connect('mongodb+srv://sharongamze:sharongamze@cluster0.6p3gd.mongodb.net/Trying?retryWrites=true&w=majority',{
+mongoose.connect('mongodb+srv://sharongamze:sharongamze@cluster0.6p3gd.mongodb.net/FinalProject?retryWrites=true&w=majority',{
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

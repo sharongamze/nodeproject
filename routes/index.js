@@ -1,12 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://sharongamze:sharongamze@cluster0.6p3gd.mongodb.net/Trying?retryWrites=true&w=majority');
-var Schema = mongoose.Schema;
-const User = require('../model/users.js'); // User Model
-const Cost = require('../model/cost'); // User Model
+mongoose.connect('mongodb+srv://sharongamze:sharongamze@cluster0.6p3gd.mongodb.net/FinalProject?retryWrites=true&w=majority');
+const Cost = require('../model/cost'); // cost model
 var Response = require('./respons.js');
-var session = require('express-session');
 var app = express();
 
 
@@ -35,7 +32,7 @@ router.get('/logout', function(req, res) {
 
 
 router.get('/add_expense', function(req, res) {
-  console.log(req.session.user.username)
+  console.log(req.session.user._id)
   if(!req.session.user){
     console.log(req.session.user.username)
     res.render('nav')

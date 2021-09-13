@@ -64,7 +64,7 @@ app.use(function(err, req, res, next) {
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://sharongamze:sharongamze@cluster0.6p3gd.mongodb.net/Trying?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://sharongamze:sharongamze@cluster0.6p3gd.mongodb.net/FinalProject?retryWrites=true&w=majority', {
   useMongoClient: true
 })
     .then(() => console.log('connection succesful'))
