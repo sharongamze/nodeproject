@@ -104,8 +104,6 @@ router.post('/test/submit',function(req, res, next) {
         var sum=[];
         doc.forEach(element => category.push(element.category))
         doc.forEach(element => sum.push(element.sum))
-        console.log(category);
-        console.log(sum);
         res.render('report.hbs', {items: doc, category:category, sum:sum});
       });
 });

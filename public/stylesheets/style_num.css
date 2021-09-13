@@ -2726,9 +2726,9 @@ input[type="button"].btn-block {
   color: #212529; }
 
 .button2 {
-  background-color: #1da1f2;
+  background-color: #007bff;
   color: white;
-  border:  solid #1da1f2;
+  border:  solid #007bff;
   border-radius: 8px;
 }
 
