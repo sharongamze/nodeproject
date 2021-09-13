@@ -25,7 +25,6 @@ router.post('/signup', function(req, res) {
     data.save(function(err){
         if(err){
             console.log(err);
-            // Response.errorResponse(err.message,res);
         }else{
             res.render('login');
         }
@@ -43,7 +42,7 @@ router.post('/login', function(req, res) {
             Response.errorResponse(err.message,res);
         }
         if(!user){
-            alert("Wrong Credentials")
+            alert("Wrong Credentials");
         }else{
             req.session.user = user;
             res.redirect('/nav');

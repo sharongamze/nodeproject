@@ -9,10 +9,10 @@ var app = express();
 
 router.get('/', function(req, res) {
   if(req.session.user){
-    res.render('nav')
+    res.render('nav');
   }
   else {
-    res.render('login')
+    res.render('login');
   }
 });
 
@@ -34,10 +34,9 @@ router.get('/logout', function(req, res) {
 router.get('/add_expense', function(req, res) {
   console.log(req.session.user._id)
   if(!req.session.user){
-    console.log(req.session.user.username)
-    res.render('nav')
+    res.render('nav');
   }else{
-    res.render('index')
+    res.render('index');
   }
 });
 
@@ -102,8 +101,8 @@ router.post('/test/submit',function(req, res, next) {
       .then(function(doc) {
         var category= [];
         var sum=[];
-        doc.forEach(element => category.push(element.category))
-        doc.forEach(element => sum.push(element.sum))
+        doc.forEach(element => category.push(element.category));
+        doc.forEach(element => sum.push(element.sum));
         res.render('report.hbs', {items: doc, category:category, sum:sum});
       });
 });
