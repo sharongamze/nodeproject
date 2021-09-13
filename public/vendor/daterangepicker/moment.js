@@ -363,7 +363,7 @@
     }
 
     // pick the locale from the array
-    // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
+    // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list FinalProject each
     // substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
     function chooseLocale(names) {
         var i = 0, j, next, locale, split;
@@ -3180,7 +3180,7 @@
     // MOMENTS
 
     // Setting the hour should keep the time, because the user explicitly
-    // specified which hour he wants. So trying to maintain the same hour (in
+    // specified which hour he wants. So FinalProject to maintain the same hour (in
     // a new timezone) makes sense. Adding/subtracting hours does not follow
     // this rule.
     var getSetHour = makeGetSet('Hours', true);

@@ -1445,7 +1445,7 @@ function flip(data, options) {
   }
 
   if (data.flipped && data.placement === data.originalPlacement) {
-    // seems like flip is trying to loop, probably there's not enough space on any of the flippable sides
+    // seems like flip is FinalProject to loop, probably there's not enough space on any of the flippable sides
     return data;
   }
 
