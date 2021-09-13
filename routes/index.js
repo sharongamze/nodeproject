@@ -63,7 +63,7 @@ router.post('/insert', function(req, res, next) {
   var data_cost = new Cost(cost);
   data_cost.save();
 
-  res.redirect('/');
+  res.render('index');
 });
 
 const exphbs = require("express-handlebars");
