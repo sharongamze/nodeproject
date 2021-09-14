@@ -50,7 +50,7 @@ router.get('/nav', function(req, res, next) {
 router.post('/insert', function(req, res, next) {
   var cost = {
     sum: req.body.sum,
-    category: req.body.category,
+    category: req.body.category.charAt(0).toUpperCase() + req.body.category.slice(1),
     description: req.body.description,
     User: req.session.user,
     date : req.body.date,
