@@ -85,9 +85,10 @@ router.post('/test/submit',function(req, res, next) {
       .then(function(doc) {
         var category= [];
         var sum=[];
+        var total=0;
         doc.forEach(element => category.push(element.category));
-        doc.forEach(element => sum.push(element.sum));
-        res.render('report.hbs', {items: doc, category:category, sum:sum});
+        doc.forEach((element => (sum.push(element.sum), total += parseFloat(element.sum))));
+        res.render('report.hbs', {items: doc, category:category, sum:sum, total: total});
       });
 });
 
@@ -96,9 +97,10 @@ router.post('/test/all',function(req, res, next) {
         .then(function(doc) {
             var category= [];
             var sum=[];
+            var total=0;
             doc.forEach(element => category.push(element.category));
-            doc.forEach(element => sum.push(element.sum));
-            res.render('report.hbs', {items: doc, category:category, sum:sum});
+            doc.forEach((element => (sum.push(element.sum), total += parseFloat(element.sum))));
+            res.render('report.hbs', {items: doc, category:category, sum:sum, total: total});
         });
 });
 
