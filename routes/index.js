@@ -69,11 +69,11 @@ app.set('view engine', 'handlebars');
 
 
 router.get('/get_report',function(req, res, next) {
-    res.render('report.hbs')
+    res.render('report.hbs');
 });
 
 router.post('/test/submit',function(req, res, next) {
-  var date= new Date(req.body.month)
+  var date= new Date(req.body.month);
   const month = date.getMonth();
   const year = date.getFullYear();
   const fromDate = new Date(year, month, 1);
