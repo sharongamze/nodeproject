@@ -72,6 +72,7 @@ router.post('/insert', function(req, res, next) {
 
             var new_user_change = new changes(userchange);
             await new_user_change.save();
+            id.forEach(element => {if(element === data_cost){var index = id.indexOf(element);id.splice(index,1)}});
             await changes.findByIdAndUpdate(new_user_change, {$push: {Cost: id}})
         });
 
