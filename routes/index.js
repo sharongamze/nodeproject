@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://sharongamze:sharongamze@cluster0.6p3gd.mongodb.net/FinalProject?retryWrites=true&w=majority');
 const Cost = require('../model/cost'); // cost model
+const changes= require('../model/userchanges')
 var Response = require('./respons.js');
 var app = express();
 
@@ -58,6 +59,22 @@ router.post('/insert', function(req, res, next) {
 
   var data_cost = new Cost(cost);
   data_cost.save();
+  //add to document versioning?
+  Cost.find({User: req.session.user})
+        .then(async function (doc) {
+            var id=[];
+            doc.forEach(element => id.push(element._id))
+            var userchange = {
+                User: req.session.user,
+                Cost: data_cost,
+                revision: id.length +1
+            };
+
+            var new_user_change = new changes(userchange);
+            await new_user_change.save();
+            await changes.findByIdAndUpdate(new_user_change, {$push: {Cost: id}})
+        });
+
 
   res.render('index');
 });

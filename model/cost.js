@@ -7,12 +7,10 @@ mongoose.connect('mongodb+srv://sharongamze:sharongamze@cluster0.6p3gd.mongodb.n
 
 
 var costCollection= new Schema({
-    sum : {type: String, required: true},
+    sum : {type: Number, required: true},
     category:  String,
     description: String,
-    User:[
-        {type: Schema.Types.ObjectId, ref: 'UserData'}
-    ],
+    User: {type: Schema.Types.ObjectId, ref: 'UserData'},
     date: Date,
 }, {collection: 'cost-collection'});
 
