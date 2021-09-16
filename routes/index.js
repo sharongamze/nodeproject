@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://sharongamze:sharongamze@cluster0.6p3gd.mongodb.net/FinalProject?retryWrites=true&w=majority');
 const Cost = require('../model/cost'); // cost model
-const changes= require('../model/userchanges')
+const user_changes= require('../model/userchanges')
 var Response = require('./respons.js');
 var app = express();
 
@@ -62,18 +62,19 @@ router.post('/insert', function(req, res, next) {
   //add to document versioning?
   Cost.find({User: req.session.user})
         .then(async function (doc) {
-            var id=[];
-            doc.forEach(element => id.push(element._id))
-            var userchange = {
-                User: req.session.user,
-                Cost: data_cost,
-                revision: id.length +1
-            };
+            var cost_id=[];
+            doc.forEach(element => cost_id.push(element._id))
+            if (cost_id.length > 0) {
+                var user_change = {
+                    User: req.session.user,
+                    revision: cost_id.length
+                };
+                var new_user_change = new user_changes(user_change);
+                await new_user_change.save();
+                cost_id.forEach(element => {if(element === data_cost){var index = cost_id.indexOf(element);cost_id.splice(index,1)}});
+                await user_changes.findByIdAndUpdate(new_user_change, {$push: {Cost: cost_id}})
+            }
 
-            var new_user_change = new changes(userchange);
-            await new_user_change.save();
-            id.forEach(element => {if(element === data_cost){var index = id.indexOf(element);id.splice(index,1)}});
-            await changes.findByIdAndUpdate(new_user_change, {$push: {Cost: id}})
         });
 
 
