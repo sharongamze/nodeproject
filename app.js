@@ -5,15 +5,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require("express-session");
+var app = express();
+var cons = require('consolidate');
+const bodyParser = require("body-parser");
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
-
-var app = express();
-
-
-var cons = require('consolidate');
-const bodyParser = require("body-parser");
 
 
 // view engine setup
