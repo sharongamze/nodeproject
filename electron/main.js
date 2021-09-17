@@ -1,5 +1,5 @@
 //we use this file to open desktop application - Electron
-// to run this desktop  on terminal - npm run launch
+// to run this desktop app on terminal - npm run launch
 const { BrowserWindow, app } = require('electron');
 require('../app.js');
 
