@@ -2,8 +2,10 @@
   "name": "trying",
   "version": "0.0.0",
   "private": true,
+  "main": "electron/main.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "launch": "electron electron/main.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "alert": "^5.0.10",
+    "electron": "^14.0.1",
     "express-handlebars": "^5.3.3",
     "express-session": "^1.17.2",
     "popups": "^1.1.3"
