@@ -24,7 +24,7 @@ body {
   background-color: transparent;
   background-image: url("../images/MONEY-IMAGE.jpg"); /*The image used */
   /* background-color: #cccccc; Used if the image is unavailable */
-  height: 700px; /* You must set a specified height */
+  height: 800px; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /*Do not repeat the image */
   background-size: cover; /*  Resize the background image to cover the entire container */
@@ -45,7 +45,7 @@ body {
   color: var(--color-secondary);
   background-color: var(--color-primary);
   font-size: 1.5rem;
-  text-transform: lowercase;
+  text-transform: capitalize;
   text-shadow: var(--shadow) 3px 3px;
   transition: flex-grow var(--duration) var(--ease);
 }
