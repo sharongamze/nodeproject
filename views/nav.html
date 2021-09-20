@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Menu</title>
-</head>
-<link rel="stylesheet" href="../../stylesheets/mystyle.css">
-<body>
-<div class="multi-button">
-    <form action="/add_expense" method="get">
-    <button type="submit">add expense</button>
-    </form>
+  </head>
+  <link rel="stylesheet" href="../../stylesheets/mystyle.css" />
+  <!-- <img src="../../images/MONEY-IMAGE.jpg" alt="Money Image" /> -->
+  <body>
+    <!-- <img src="MONEY-IMAGE.jpg" alt="Money Image" /> -->
+    <!-- <style>
+      div
+      {
+        background-image: url("../../images/MONEY-IMAGE.jpg");
+      }
+    </style> -->
 
-    <form action="/get_report" method="get">
-    <button type="submit">view report</button>
-    </form>
+    <div class="multi-button">
+      <form action="/add_expense" method="get">
+        <button type="submit">Add Expense</button>
+      </form>
 
-    <form action="/logout" method="get">
-    <button type="submit">logout</button>
-    </form>
-</div>
-</body>
+      <form action="/get_report" method="get">
+        <button type="submit">View Report</button>
+      </form>
+
+      <form action="/logout" method="get">
+        <button type="submit">Logout</button>
+      </form>
+    </div>
+  </body>
 </html>
