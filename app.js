@@ -1,6 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
-const exphbs = require('express-handlebars');
+const exphbs = require('hbs');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -13,10 +13,15 @@ var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 
 
-// view engine setup
-app.engine('html', cons.swig);
+
+
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html');
+app.set('view engine', 'hbs');
+
+
+// view engine setup
+// app.engine('html', cons.swig);
+// app.set('view engine', 'html');
 
 
 
@@ -52,7 +57,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  // res.render('error.html');
+  // res.render('error.hbs');
   res.render('error', {
     message: err.message,
     error: err
