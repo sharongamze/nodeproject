@@ -81,12 +81,6 @@ router.post('/insert', function(req, res, next) {
   res.render('index');
 });
 
-// const exphbs = require("express-handlebars");
-//
-// app.engine('handlebars', exphbs());
-// app.set('view engine', 'handlebars');
-
-
 router.get('/get_report',function(req, res, next) {
     res.render('report.hbs');
 });
