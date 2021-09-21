@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const relationship = require("mongoose-relationship");
 const User= require('./users');
 const Cost= require('./cost');
-
 const Schema = mongoose.Schema;
 
 const userChangesSchema = new Schema({
@@ -10,8 +9,10 @@ const userChangesSchema = new Schema({
        type: Number
     },
    User:{
+    
     type: Schema.Types.ObjectId, 
-    ref: 'UserData'
+    ref: 'UserData',
+
 },
     Cost: [{type: Schema.Types.ObjectId, 
         ref: 'cost-collection'}]

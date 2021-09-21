@@ -28,7 +28,7 @@
 <!--    <div class="container">-->
       <div class="row align-items-center justify-content-center">
         <div class="col-md-7 py-5">
-          <h2>Cost Info</h2>
+          <h2>Expense Info</h2>
           <section class="insert">
             <form action="insert" method="post">
               <div class="input">
@@ -42,7 +42,7 @@
               <div class="input">
                 <div class="col-md-6">
                   <div class="form-group first">
-                    <label for="date">Date of expense</label>
+                    <label for="date">Expense Date </label>
                     <input type="Date" class="form-control"  id="date" name="date">
                   </div>
                 </div>
@@ -51,9 +51,31 @@
                   <div class="col-md-6">
                     <div class="form-group last mb-3">
                       <label for="category">Category</label>
-                      <input type="text"  style="text-transform: capitalize;" class="form-control"  placeholder="e.g Food"  id="category" name="category">
-                    </div>
+              <select
+                      class="form-control"
+                      name="category"
+                      id="category"
+                    >
+                      <option value="">-Select Category</option>
+                      <option value="Home">Home</option>
+                      <option value="Food">Food</option>
+                      <option value="Bills">Bills</option>
+                      <option value="Medical">Medical</option>
+                      <option value="Cosmetics">Cosmetics</option>
+                      <option value="Clothes">Clothes</option>
+                      <option value="Mobile">Mobile</option>
+                      <option value="Gadgets">Gadgets</option>
+                      <option value="Entertainment">Entertainment</option>
+                      <option value="Transportation">Transportation</option>
+                      <option value="Gas">Gas</option>
+                      <option value="Insurance">Insurance</option>
+                      <option value="Computer and Software"> Computer and Software</option>
+                      <option value="Electricity">Electricity</option>
+                      <option value="Sport">Sport</option>
+                      <option value="Misc">Misc</option>
+                    </select>
                   </div>
+                  <span class="icon fa fa-user-o"></span>
                 </div>
                   <div class="input">
                     <div class="col-md-12">
@@ -75,7 +97,7 @@
             <form action="/nav" method="get">
               <div class="button">
                 <div class="col-md-6">
-              <button  class="btn px-5 btn-primary"  type="submit">Back to menu</button>
+              <button  class="btn px-5 btn-primary"  type="submit">Back to Menu</button>
                 </div>
               </div>
             </form>
