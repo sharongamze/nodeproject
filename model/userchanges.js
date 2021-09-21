@@ -1,23 +1,25 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-ObjectId = Schema.ObjectId;
-relationship = require("mongoose-relationship");
-var User= require('./users');
-var Cost= require('./cost');
-mongoose.connect('mongodb+srv://sharongamze:sharongamze@cluster0.6p3gd.mongodb.net/FinalProject?retryWrites=true&w=majority',{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+const mongoose = require('mongoose');
+const relationship = require("mongoose-relationship");
+const User= require('./users');
+const Cost= require('./cost');
 
-var UserChangesSchema = new Schema({
-   revision: {type: Number},
-   User:
-    {type: Schema.Types.ObjectId, ref: 'UserData'},
-    Cost: [{type: Schema.Types.ObjectId, ref: 'cost-collection'}]
+const Schema = mongoose.Schema;
+
+const userChangesSchema = new Schema({
+   revision: {
+       type: Number
+    },
+   User:{
+    type: Schema.Types.ObjectId, 
+    ref: 'UserData'
+},
+    Cost: [{type: Schema.Types.ObjectId, 
+        ref: 'cost-collection'}]
 }, {collection: 'UserChangesData'});
 
-module.exports = mongoose.model("UserChangerData",UserChangesSchema);
 
+
+exports = mongoose.model("UserChangerData",userChangesSchema);
 
 
 

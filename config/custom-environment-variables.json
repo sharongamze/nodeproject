@@ -1,0 +1,8 @@
+{
+    "appPrivateKey": "app_privateKey",
+    "db": {
+        "user":"db_user",
+        "password":"db_password"
+    }
+}
+

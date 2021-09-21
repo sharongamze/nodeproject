@@ -1,0 +1,10 @@
+{
+    "name":"Expense Manager Application - Production",
+    "port":3000,
+    "db":{
+        "host":"prod-db-srv"
+    }
+}
+    
+    
+    

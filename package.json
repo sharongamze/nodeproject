@@ -8,7 +8,9 @@
     "launch": "electron electron/main.js"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
+    "config": "^3.3.6",
     "connect-ensure-login": "^0.1.1",
     "consolidate": "^0.16.0",
     "cookie-parser": "~1.4.4",
@@ -18,6 +20,10 @@
     "handlebars": "^4.7.7",
     "hbs": "^4.1.2",
     "http-errors": "~1.6.3",
+    "install": "^0.13.0",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "loadsh": "^0.0.4",
     "mongoose": "^6.0.5",
     "mongoose-relationship": "^0.1.5",
     "morgan": "~1.9.1",

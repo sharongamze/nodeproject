@@ -1,0 +1,5 @@
+{
+    "name":"Expense Manager Application",
+    "appPrivateKey":"",
+    "db": "mongodb://localhost:27017"
+ }

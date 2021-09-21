@@ -1,17 +1,22 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-mongoose.connect('mongodb+srv://sharongamze:sharongamze@cluster0.6p3gd.mongodb.net/FinalProject?retryWrites=true&w=majority',{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-
-var costCollection= new Schema({
-    sum : {type: Number, required: true},
+const costCollection= new Schema({
+    sum: {
+    type: Number,
+        min:0,
+        required: true
+    },
     category:  String,
     description: String,
-    User: {type: Schema.Types.ObjectId, ref: 'UserData'},
-    date: Date,
+    User: {
+        type: Schema.Types.ObjectId,
+         ref: 'UserData'
+        },
+    date:{ 
+        type:Date,
+        required:true
+    },
 }, {collection: 'cost-collection'});
 
 
