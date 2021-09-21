@@ -5,7 +5,8 @@
   "main": "electron/main.js",
   "scripts": {
     "start": "node ./bin/www",
-    "launch": "electron electron/main.js"
+    "launch": "electron electron/main.js",
+    "test": "mocha --timeout 20000 --recursive --exit"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -24,6 +25,7 @@
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "loadsh": "^0.0.4",
+    "lodash": "^4.17.21",
     "mongoose": "^6.0.5",
     "mongoose-relationship": "^0.1.5",
     "morgan": "~1.9.1",
@@ -36,9 +38,11 @@
   },
   "devDependencies": {
     "alert": "^5.0.10",
+    "chai": "^4.3.4",
     "electron": "^14.0.1",
     "express-handlebars": "^5.3.3",
     "express-session": "^1.17.2",
+    "mocha": "^9.1.1",
     "popups": "^1.1.3"
   }
 }
