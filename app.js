@@ -15,7 +15,6 @@ app.set('view engine', 'hbs');
 
 
 // require('./startup/routes')(app);
-// require('./startup/db')();
 
 require('./startup/config')();
 require('./startup/db')();
