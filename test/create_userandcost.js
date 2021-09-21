@@ -6,8 +6,6 @@ const mongoose = require("mongoose");
 
 describe('Creating documents', () => {
     it('creates a user', (done) => {
-        //assertion is not included in mocha so
-        //require assert which was installed along with mocha
         let date = new Date(1998, 5, 10);
         const newUser = new User({
             firstname: 'Sharon',
@@ -17,9 +15,9 @@ describe('Creating documents', () => {
             password: '123456',
             marital_status: 'Single'
         });
-        newUser.save() //takes some time and returns a promise
+        newUser.save()
             .then(() => {
-                assert(!newUser.isNew); //if poke is saved to db it is not new
+                assert(!newUser.isNew);
                 done();
             });
     });
@@ -34,9 +32,9 @@ describe('Creating documents', () => {
             date : date_new
         });
 
-       cost.save() //takes some time and returns a promise
+       cost.save()
             .then(() => {
-                assert(!cost.isNew); //if poke is saved to db it is not new
+                assert(!cost.isNew);
                 done();
             });
 

@@ -1,7 +1,6 @@
 const assert = require('assert');
 const Cost = require('../model/cost');
 const mongoose = require("mongoose");
-const ObjectId = require('mongoose').ObjectId;
 
 let user;
 before( () => {
