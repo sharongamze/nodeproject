@@ -19,7 +19,7 @@ const userChangesSchema = new Schema({
 
 
 
-exports = mongoose.model("UserChangerData",userChangesSchema);
+module.exports = mongoose.model("UserChangesData",userChangesSchema);
 
 
 
