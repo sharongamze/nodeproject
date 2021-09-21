@@ -1,0 +1,9 @@
+{
+    "name":"Expense Manager Application - Development",
+    "port":27017,
+    "db":{
+        "host":"dev-db-srv"
+    }
+}
+    
+    

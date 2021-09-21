@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const User= require('../model/users');
 const alert = require('alert');
 
@@ -13,7 +13,7 @@ router.get("/signup",(req,res)=>{
 });
 
 router.post('/signup', function(req, res) {
-    var item = {
+    let item = {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         birthday: req.body.birthday,
@@ -21,7 +21,7 @@ router.post('/signup', function(req, res) {
         password: req.body.password,
         marital_status: req.body.marital_status,
     };
-    var data = new User(item);
+    let data = new User(item);
     data.save(function(err){
         if(err){
             console.log(err);
@@ -34,8 +34,8 @@ router.post('/signup', function(req, res) {
 
 /* LOGIN USER. */
 router.post('/login', function(req, res) {
-    var email = req.body.email;
-    var password = req.body.password;
+    const email = req.body.email;
+    const password = req.body.password;
     User.findOne({email: email, password: password}, function(err, user){
         if(err){
             console.log(err);
