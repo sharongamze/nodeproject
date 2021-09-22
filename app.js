@@ -9,16 +9,10 @@ const bodyParser = require("body-parser");
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const config = require('config');
-
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-
-
-// require('./startup/routes')(app);
+var cons = require('consolidate');
 
 require('./startup/config')();
 require('./startup/db')();
-
 
 const appkey=config.get('appPrivateKey'); //change location along with the session
 
@@ -28,6 +22,11 @@ app.use(session({
   saveUninitialized: true
 }));
 
+
+
+app.engine('html', cons.swig);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html')
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -35,6 +34,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/user', loginRouter);
 app.use('/', indexRouter);
+
+
+
+// require('./startup/routes')(app);
 
 
 // catch 404 and forward to error handler

@@ -40,11 +40,11 @@
     <button type="submit">Submit</button>
 </form>
 <form style="font-family:sans-serif;padding-right: 20px; text-align:center" action="/test/all" method="post">
-    <label><h4>Or Choose all expense info:</h4></label>
-    <button type="submit">All expense info</button>
+    <label><h4>View all Expense Data</h4></label>
+    <button type="submit">All Expenses </button>
 </form>
 <form style="font-family:sans-serif;padding-right: 20px; text-align:center" action="/nav" method="get">
-    <button class="previous" type="submit">Back to menu</button>
+    <button class="previous" type="submit">Back to Menu</button>
 </form>
 </br>
 <br>
@@ -52,7 +52,7 @@
     <caption style="text-align:center;padding-right:2cm; color:black"><h3>Total : {{ total }}</h3></caption>
     <thead>
     <tr>
-        <th scope="col">ID</th>
+        <th scope="col">Expense ID</th>
         <th scope="col">Sum</th>
         <th scope="col">Category</th>
         <th scope="col">Description</th>
@@ -132,7 +132,7 @@
         options:{
             title:{
                 display:true,
-                text:'Cost information according to categories',
+                text:'Expenses by Category Graph',
                 fontSize:18
             },
             legend:{
