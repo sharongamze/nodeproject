@@ -1,4 +1,4 @@
-const User = require('../model/users');
+const User = require('../model/users').User;
 const assert = require('assert');
 const Cost = require('../model/cost');
 const mongoose = require("mongoose");

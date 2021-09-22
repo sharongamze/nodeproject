@@ -1,5 +1,5 @@
 const assert = require('assert');
-const User = require('../model/users');
+const User = require('../model/users').User;
 const mongoose = require("mongoose");
 
 before( () => {
@@ -28,8 +28,8 @@ before( () => {
 });
 
 describe('Reading User details', () => {
-    it('find user according to email and password', (done) => {
-        User.findOne({email: 'hila@gmail.com', password: 'AAA123456'})
+    it('find user according to email', (done) => {
+        User.findOne({email: 'hila@gmail.com'})
             .then((user) => {
                 assert(user);
                 done();
