@@ -25,27 +25,4 @@ const costSchema= new Schema({
     description: String,
 }, {collection: 'cost-collection'});
 
-
-const validateCost=data=> {
-    const schema =Joi.object().keys({
-      sum: Joi.number()
-      .min(0)
-      .max(999999)
-      .required()
-      .messages({
-        'number.required': "Sum is required",
-        'number.min': "Sum value must be positive'",
-        'number.max': "Max sum value is 999999",
-      }),
-      date: Joi.date()
-      .required()
-      .messages({
-        'date.required': "Expense date is required",})
-    })
-    return schema;
-  };
-
-//  const Cost= mongoose.model('cost-collection', costSchema);
-//  module.exports.Cost=Cost;
 module.exports = mongoose.model('cost-collection', costSchema);
-// module.exports = {validateCost};

@@ -1,3 +1,4 @@
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -5,16 +6,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require("express-session");
 const app = express();
-const bodyParser = require("body-parser");
 const indexRouter = require('./routes/index');
-const loginRouter = require('./routes/login');
+const loginRouter = require('./routes/auth');
+const signupRouter = require('./routes/signup');
 const config = require('config');
-var cons = require('consolidate');
+const cons = require('consolidate');
 
-require('./startup/config')();
-require('./startup/db')();
-
-const appkey=config.get('appPrivateKey'); //change location along with the session
+const appkey=config.get('appPrivateKey'); 
 
 app.use(session({
   secret: appkey,
@@ -22,8 +20,8 @@ app.use(session({
   saveUninitialized: true
 }));
 
-
-
+require('./startup/config')();
+require('./startup/db')();
 app.engine('html', cons.swig);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html')
@@ -32,27 +30,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/user', loginRouter);
+app.use('/user', loginRouter,signupRouter);
 app.use('/', indexRouter);
 
 
+/*Middleware functions  */
 
-// require('./startup/routes')(app);
-
-
-// catch 404 and forward to error handler
+//Catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// Error handler
 app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  // Render the error page
   res.status(err.status || 500);
-  // res.render('error.hbs');
   res.render('error', {
     message: err.message,
     error: err
