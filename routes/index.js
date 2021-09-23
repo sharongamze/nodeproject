@@ -64,7 +64,7 @@ router.post('/insert', async (req, res)=> {
   let user = req.session.user;
   let data_cost = new Cost(cost);
   await data_cost.save();
-  await Cost.find({user}) 
+  await Cost.find({User:user}) 
         .then(async function (doc) {
           const id=[];
             doc.forEach(element => id.push(element._id))
