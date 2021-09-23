@@ -11,7 +11,7 @@ const config = require('config');
 
 /* LOGIN USER. */
 router.post('/login', async (req, res)=> {
-    const validation = validateCreds().validate(req.body); //catch the exception
+    const validation = validateCreds().validate(req.body); 
 
     if (validation.error) return res.status(400).send(validation.error.details[0].message);
 
@@ -34,6 +34,7 @@ router.post('/login', async (req, res)=> {
     }
 );
 
+/* Validate login creds for security reasons => To prevent from malicious user inserting mal scripts   */
 const validateCreds=data=> {
     const schema =Joi.object().keys({
       email: Joi.string()

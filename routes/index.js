@@ -5,6 +5,7 @@ const Cost = require('../model/cost');
 const Changes= require('../model/userchanges')
 const response = require('./response.js');
 const _ = require('lodash');
+
 const app = express();
 const exphbs = require("express-handlebars");
 const Joi = require('joi');
@@ -47,20 +48,27 @@ router.get('/nav', (req, res) =>{
     }
 });
 
-router.post('/insert',async (req, res) =>{
-
+router.post('/insert', async (req, res)=> {
   const validation = validateCost().validate(req.body); 
   if (validation.error) 
       return res.status(400).send(validation.error.details[0].message);
 
-    const user = req.session.user;
-    let cost = new Cost(_.pick(req.body, ['sum', 'category', 'description','date'],user));
-     await cost.save();
-         await Cost.find({customer: user})
+  let cost = {
+    sum: req.body.sum,
+    category: req.body.category,
+    description: req.body.description,
+    User: req.session.user,
+    date : req.body.date,
+  };
+
+  let user = req.session.user;
+  let data_cost = new Cost(cost);
+  await data_cost.save();
+  await Cost.find({user}) 
         .then(async function (doc) {
-            let id=[];
+          const id=[];
             doc.forEach(element => id.push(element._id))
-            id.forEach(element => {if(element.equals(cost._id)){var index = id.indexOf(element);id.splice(index,1)}});
+            id.forEach(element => {if(element.equals(data_cost._id)){let index = id.indexOf(element);id.splice(index,1)}});
             if (id.length > 0) {
                 let userchange = {
                     User: user,
@@ -72,6 +80,7 @@ router.post('/insert',async (req, res) =>{
             }
 
         });
+
   res.render('expense');
 });
 
